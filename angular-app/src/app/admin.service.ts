@@ -14,12 +14,13 @@ export class AdminService {
       return this.http.get(this.baseUrl+'/');
     }
 
-    addUser(name, phone) {
+    addUser(name, username, password) {
       const user = {
         name: name,
-        phone: phone
+        userid: username,
+        password: password
       };
-      return this.http.post(`${this.baseUrl}/single`, user);
+      return this.http.post(`${this.baseUrl}/`, user);
     }
   
 }

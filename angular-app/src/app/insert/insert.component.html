@@ -26,16 +26,16 @@
         <div class="create-form">
           <mat-form-field class="field-full-width">
             <input matInput placeholder="name" [(ngModel)]="data.name">
-    
           </mat-form-field>
           <mat-form-field class="field-full-width">
-            <input matInput placeholder="phone" [(ngModel)]="data.phone" >
+            <input matInput placeholder="username" [(ngModel)]="data.userid" >
           </mat-form-field>
-          
-          
+          <mat-form-field class="field-full-width">
+            <input matInput placeholder="password" [(ngModel)]="data.password" >
+          </mat-form-field>
           <mat-divider></mat-divider>
           <br><br>
-          <button type="submit" [mat-dialog-close]="data" (click)="addUser(data.name, data.name)"  mat-raised-button color="primary">Add</button>
+          <button type="submit" [mat-dialog-close]="data" (click)="addUser(data.name, data.userid, data.password)"  mat-raised-button color="primary">Add</button>
         </div>
       </mat-card>
     </div>

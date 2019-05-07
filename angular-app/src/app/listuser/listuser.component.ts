@@ -11,7 +11,8 @@ import { InsertComponent } from '../insert/insert.component';
 export class ListuserComponent implements OnInit {
 userlist:any;
 name:string;
-phone:string;
+userid:string;
+password:string;
   constructor(public admin: AdminService,public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -29,16 +30,15 @@ this.getUserList()
   openDialog(): void {
     const dialogRef = this.dialog.open(InsertComponent, {
       width: '500px',
-     data: {name: this.name, phone: this.phone}
+     data: {name: this.name, userid: this.userid, password: this.password}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result);
-      this.admin.addUser(result.name,result.phone).subscribe(() => {
+      this.admin.addUser(result.name,result.userid,result.password).subscribe(() => {
         console.log("added user");
         this.getUserList()
-        
       })
     });
   }

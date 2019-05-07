@@ -5,7 +5,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 export interface DialogData {
   name: string;
-  phone: string;
+  userid: string;
+  password: string;
 }
 @Component({
   selector: 'app-insert',
@@ -20,7 +21,8 @@ export class InsertComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
     this.createForm = this.fb.group({
       name: ['', Validators.required],
-      phone: ''
+      userid: '',
+      password: ['', Validators.required]
     });
   }
 
