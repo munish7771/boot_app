@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';import { BehaviorSubject } fro
   providedIn: 'root'
 })
 export class AdminService {
-  baseUrl='http://localhost:9006/user'
+  baseUrl='http://localhost:8080/users'
   constructor(public http:HttpClient) { }
   private userSource = new BehaviorSubject('list');
   currentUserList = this.userSource.asObservable();
