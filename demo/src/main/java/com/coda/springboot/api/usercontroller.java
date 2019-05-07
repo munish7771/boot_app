@@ -45,11 +45,12 @@ public class usercontroller {
 //    }
 //    
     // to fetch users from name
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/{name}", method = RequestMethod.GET)
     public List<user> modifyUserById(@PathVariable("name") String name) {
     	return repository.findUserByName(name);
     }
-    
+    @CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public user createuser(@Valid @RequestBody user user) {
       user.set_id(ObjectId.get());
@@ -57,7 +58,7 @@ public class usercontroller {
       // return the same user
       return user;
     }
-    
+    @CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteuser(@PathVariable ObjectId id) {
       repository.delete(repository.findBy_id(id));
