@@ -15,7 +15,8 @@ const routes: Routes = [
   {path:'edit',component:EditComponent},
   {path:'listproduct',component:ListproductComponent},
   {path:'insertproduct',component:InsertProductComponent},
-  {path:'editproduct',component:EditProductComponent}
+  {path:'editproduct',component:EditProductComponent},
+  {path:''}
 ];
 
 @NgModule({
