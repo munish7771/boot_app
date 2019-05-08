@@ -12,8 +12,7 @@ import { EditComponent } from '../edit/edit.component';
 export class ListuserComponent implements OnInit {
 userlist:any;
 name:string;
-userid:string;
-password:string;
+phone:string;
   constructor(public admin: AdminService,public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -31,19 +30,21 @@ this.getUserList()
   openDialog(): void {
     const dialogRef = this.dialog.open(InsertComponent, {
       width: '500px',
-     data: {name: this.name, userid: this.userid}
+     data: {name: this.name, phone: this.phone}
+
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result);
-      if(result != undefined){
-      this.admin.addUser(result.name,result.userid,result.password).subscribe(() => {
-        console.log("added user");
-        this.getUserList()
-        
-      })
-    }
+      if(result){
+        this.admin.addUser(result.name,result.phone,result.place).subscribe(() => {
+          console.log("added user");
+          this.getUserList()
+          
+        })
+      }
+
     });
   }
 
@@ -56,15 +57,18 @@ this.getUserList()
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result);
-      if(result != undefined){
-      this.admin.editUser(result.name,result.userid,result.password,result._id).subscribe(() => {
-        console.log("edited user");
-        this.getUserList()
-        
-      })
-    }
+      if (result){
+        this.admin.editUser(result.name,result.phone,result.place,result._id).subscribe(() => {
+          console.log("edited user");
+          this.getUserList()
+          
+        })
+      }
+   
+
     });
   }
+
 
   editUser(user){
 console.log(user);

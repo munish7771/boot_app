@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';import { BehaviorSubject } fro
   providedIn: 'root'
 })
 export class AdminService {
-  baseUrl='http://localhost:8080/users'
+  baseUrl='http://localhost:9007/user'
   constructor(public http:HttpClient) { }
   private userSource = new BehaviorSubject('list');
   currentUserList = this.userSource.asObservable();
@@ -13,20 +13,22 @@ export class AdminService {
     return this.http.get(this.baseUrl+'/');
   }
 
-  addUser(name, userid,password) {
+
+  addUser(name, phone,place) {
     const user = {
       name: name,
-      userid: userid,
-      password: password
+      phone: phone,
+      place: place
     };
-    return this.http.post(`${this.baseUrl}/`, user);
+    return this.http.post(`${this.baseUrl}/single`, user);
   }
 
-editUser(name,userid,password,id){
+editUser(name,phone,place,id){
   const user = {
     name: name,
-    userid: userid,
-    password: password
+    phone: phone,
+    place: place
+
 
   };
   return this.http.put(this.baseUrl+'/'+id, user);

@@ -23,8 +23,9 @@ import { MatToolbarModule,
   MatSnackBarModule } from '@angular/material';
 import { EditComponent } from './edit/edit.component';
 import { ListproductComponent } from './listproduct/listproduct.component';
-import { InsertProductComponent } from './insert-product/insert-product.component';
-import { EditProductComponent } from './edit-product/edit-product.component';
+import { InsertpComponent } from './insertp/insertp.component';
+import { EditpComponent } from './editp/editp.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,8 +34,9 @@ import { EditProductComponent } from './edit-product/edit-product.component';
     InsertComponent,
     EditComponent,
     ListproductComponent,
-    InsertProductComponent,
-    EditProductComponent
+    InsertpComponent,
+    EditpComponent
+
   ],
   imports: [
     BrowserModule,
