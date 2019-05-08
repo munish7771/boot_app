@@ -1,41 +1,29 @@
-<!--
-<form [formGroup]="createForm" >
-    <div class="form-group">
-      <label for="Input1">Name</label>
-      <input type="name" formControlName="name" class="form-control" id="Input1" placeholder="">
-    </div>
-    <div class="form-group">
-        <label for="Input2">Phone</label>
-        <input type="name" formControlName="phone" class="form-control" id="Input2" placeholder="">
-      </div>
-      <button type="submit" class="btn btn-primary" (click)="addUser(name.value,phone.value)" [disabled]="createForm.pristine || createForm.invalid">Add</button>
-
-  </form>
--->
-
 
 
   <div>
+    <br>
+    <mat-card>
+      <section class="mat-typography">
+        <h3>Create New User</h3>
+      </section>
+      <mat-divider></mat-divider>
       <br>
-      <mat-card>
-        <section class="mat-typography">
-          <h3>Create New User</h3>
-        </section>
+      <div class="create-form">
+        <mat-form-field class="field-full-width">
+          <input matInput placeholder="name" [(ngModel)]="data.name">
+  
+        </mat-form-field>
+        <mat-form-field class="field-full-width">
+          <input matInput placeholder="username" [(ngModel)]="data.userid" >
+        </mat-form-field>
+        <mat-form-field class="field-full-width">
+            <input matInput type="password" placeholder="password" [(ngModel)]="data.password" >
+          </mat-form-field>
+        
+        
         <mat-divider></mat-divider>
-        <br>
-        <div class="create-form">
-          <mat-form-field class="field-full-width">
-            <input matInput placeholder="name" [(ngModel)]="data.name">
-          </mat-form-field>
-          <mat-form-field class="field-full-width">
-            <input matInput placeholder="username" [(ngModel)]="data.userid" >
-          </mat-form-field>
-          <mat-form-field class="field-full-width">
-            <input matInput placeholder="password" [(ngModel)]="data.password" >
-          </mat-form-field>
-          <mat-divider></mat-divider>
-          <br><br>
-          <button type="submit" [mat-dialog-close]="data" (click)="addUser(data.name, data.userid, data.password)"  mat-raised-button color="primary">Add</button>
-        </div>
-      </mat-card>
-    </div>
+        <br><br>
+        <button type="submit" [mat-dialog-close]="data" (click)="addUser(data.name)"  mat-raised-button color="primary">Add</button>
+      </div>
+    </mat-card>
+  </div>

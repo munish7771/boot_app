@@ -5,32 +5,29 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 export interface DialogData {
   name: string;
-  userid: string;
-  password: string;
+  category: string;
+  description: string;
 }
 @Component({
-  selector: 'app-insert',
-  templateUrl: './insert.component.html',
-  styleUrls: ['./insert.component.scss']
+  selector: 'app-insert-product',
+  templateUrl: './insert-product.component.html',
+  styleUrls: ['./insert-product.component.scss']
 })
-export class InsertComponent implements OnInit {
-  createForm: FormGroup;
+export class InsertProductComponent implements OnInit {
+  createForm:FormGroup
   constructor(private fb: FormBuilder, private router: Router,
-    public dialogRef: MatDialogRef<InsertComponent>,
+    public dialogRef: MatDialogRef<InsertProductComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
     this.createForm = this.fb.group({
       name: ['', Validators.required],
-      userid: '',
-      password:''
+      category: '',
+      description:''
     });
   }
-
   ngOnInit() {
   }
+  addProduct(name){
 
-  addUser(name){
-  
-    
   }
 
 }
