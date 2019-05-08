@@ -21,12 +21,20 @@ import { MatToolbarModule,
   MatTableModule, 
   MatDividerModule, 
   MatSnackBarModule } from '@angular/material';
+import { EditComponent } from './edit/edit.component';
+import { ListproductComponent } from './listproduct/listproduct.component';
+import { InsertpComponent } from './insertp/insertp.component';
+import { EditpComponent } from './editp/editp.component';
 @NgModule({
   declarations: [
     AppComponent,
     ListuserComponent,
     HomeComponent,
-    InsertComponent
+    InsertComponent,
+    EditComponent,
+    ListproductComponent,
+    InsertpComponent,
+    EditpComponent
   ],
   imports: [
     BrowserModule,
