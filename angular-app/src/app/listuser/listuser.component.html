@@ -1,0 +1,8 @@
+<div class="jumbotron mx-auto">
+    <h1 class="display-4">User Details</h1>
+    <button type="button" class="btn btn-primary" (click)="openDialog()">Add new user</button>
+  </div>
+<ul class="list-group" *ngFor="let user of userlist">
+    <li class="list-group-item ">{{user.name}} <span class="ml-5 badge badge-primary badge-pill">{{user.userid}}</span></li>
+</ul>
+
