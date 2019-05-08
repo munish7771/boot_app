@@ -31,6 +31,7 @@ this.getUserList()
     const dialogRef = this.dialog.open(InsertComponent, {
       width: '500px',
      data: {name: this.name, phone: this.phone}
+
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -67,6 +68,7 @@ this.getUserList()
 
     });
   }
+
 
   editUser(user){
 console.log(user);

@@ -25,6 +25,7 @@ import { EditComponent } from './edit/edit.component';
 import { ListproductComponent } from './listproduct/listproduct.component';
 import { InsertpComponent } from './insertp/insertp.component';
 import { EditpComponent } from './editp/editp.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { EditpComponent } from './editp/editp.component';
     ListproductComponent,
     InsertpComponent,
     EditpComponent
+
   ],
   imports: [
     BrowserModule,

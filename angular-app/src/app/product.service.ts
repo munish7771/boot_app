@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,6 +15,7 @@ export class ProductService {
   }
 
   addproduct(name, category,description) {
+
     const product = {
       name: name,
       category: category,
@@ -27,7 +29,7 @@ export class ProductService {
       name: name,
       category: category,
       description: description
-  
+
     };
     return this.http.put(this.baseUrl+'/'+id, product);
   
@@ -36,4 +38,5 @@ export class ProductService {
   deleteUser(id){
     return this.http.delete(this.baseUrl+'/'+id);
   }
+
 }

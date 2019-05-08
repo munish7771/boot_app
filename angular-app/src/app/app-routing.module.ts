@@ -7,12 +7,14 @@ import { EditComponent } from './edit/edit.component';
 import { InsertpComponent } from './insertp/insertp.component';
 import { EditpComponent } from './editp/editp.component';
 
+
 const routes: Routes = [
   {path:'', component:HomeComponent},
   {path:'insert',component:InsertComponent},
   {path:'edit',component:EditComponent},
   {path:'insertp',component:InsertpComponent},
   {path:'editp',component:EditpComponent}
+
 ];
 
 @NgModule({

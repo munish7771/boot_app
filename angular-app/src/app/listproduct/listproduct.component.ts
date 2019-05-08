@@ -4,6 +4,7 @@ import { InsertpComponent } from '../insertp/insertp.component';
 import { MatDialog } from '@angular/material/dialog';
 import { EditpComponent } from '../editp/editp.component';
 
+
 @Component({
   selector: 'app-listproduct',
   templateUrl: './listproduct.component.html',
@@ -29,6 +30,7 @@ category:String;
 
   openDialog(): void {
     const dialogRef = this.dialog.open(InsertpComponent, {
+
       width: '500px',
      data: {name: this.name, category: this.category}
     });
@@ -52,6 +54,7 @@ category:String;
     const dialogRef = this.dialog.open(EditpComponent, {
       width: '500px',
      data: product
+
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -67,6 +70,7 @@ category:String;
     
   
 
+
     });
   }
 
@@ -79,5 +83,6 @@ category:String;
       
     })
   }
+
 
 }

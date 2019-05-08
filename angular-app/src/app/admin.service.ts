@@ -13,6 +13,7 @@ export class AdminService {
     return this.http.get(this.baseUrl+'/');
   }
 
+
   addUser(name, phone,place) {
     const user = {
       name: name,
@@ -27,6 +28,7 @@ editUser(name,phone,place,id){
     name: name,
     phone: phone,
     place: place
+
 
   };
   return this.http.put(this.baseUrl+'/'+id, user);
