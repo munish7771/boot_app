@@ -1,3 +1,31 @@
-<p>
-  insert-user works!
-</p>
+<div>
+  <br>
+  <mat-card>
+    <section class="mat-typography">
+      <h3>Add New User</h3>
+    </section>
+    <!-- <mat-divider></mat-divider> -->
+    <br>
+    <div class="create-form">
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="name" [(ngModel)]="data.name">
+
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="username" [(ngModel)]="data.username" >
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+          <input matInput placeholder="phone" [(ngModel)]="data.phoneno" >
+        </mat-form-field>
+        <mat-radio-group [(ngModel)] = "data.gender" class="example-radio-group">
+          <mat-radio-button class = "radio" *ngFor="let gender of genders" [value]="gender">{{gender}}</mat-radio-button>
+        </mat-radio-group>
+      <mat-form-field class="field-full-width">
+          <input matInput type="password" placeholder="password" [(ngModel)]="data.password" >
+        </mat-form-field>
+      <!-- <mat-divider></mat-divider> -->
+      <br><br>
+      <button type="submit" [mat-dialog-close]="data" (click)="random()"  mat-raised-button color="primary">Add</button>
+    </div>
+  </mat-card>
+</div>

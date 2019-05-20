@@ -1,7 +1,5 @@
 package com.coda.DAL;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-
 import com.coda.Entity.AuthEntity;
 public interface AuthRepository extends JpaRepository<AuthEntity, String>{
 	// no need for auth repository

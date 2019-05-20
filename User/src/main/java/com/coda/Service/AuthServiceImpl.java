@@ -4,11 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.coda.Bean.Auth;
 import com.coda.DAL.AuthRepository;
-import com.coda.Entity.AuthEntity;
 
-import lombok.extern.log4j.Log4j2;
-
-@Log4j2
 @Service("authService")
 public class AuthServiceImpl implements AuthService{
 

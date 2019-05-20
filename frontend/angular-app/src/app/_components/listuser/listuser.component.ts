@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UserService } from 'src/app/_services/user.service';
+import { InsertUserComponent } from 'src/app/_components/insert-user/insert-user.component';
 
 @Component({
   selector: 'app-listuser',
@@ -9,8 +10,10 @@ import { UserService } from 'src/app/_services/user.service';
 export class ListuserComponent implements OnInit {
 userlist:any;
 name:string;
-userid:string;
+username:string;
 password:string;
+phoneno:string;
+gender:string;
   constructor(public user: UserService,public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -24,11 +27,12 @@ this.getUserList()
     })
   }
 
-  // openDialog(): void {
-  //   const dialogRef = this.dialog.open(InsertComponent, {
-  //     width: '500px',
-  //    data: {name: this.name, userid: this.userid}
-  //   });
+  openDialog(): void {
+    const dialogRef = this.dialog.open(InsertUserComponent, {
+      width: '500px',
+     data: {name: this.name, username: this.username, phoneno: this.phoneno, gender: this.gender, password: this.password}
+    });
+  }
 
   //   dialogRef.afterClosed().subscribe(result => {
   //     console.log('The dialog was closed');
