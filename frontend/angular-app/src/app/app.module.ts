@@ -1,4 +1,5 @@
 import { NgModule }      from '@angular/core';
+import { CommonModule } from '@angular/common'; 
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -18,6 +19,9 @@ import { MaterialModule } from './_components/material/material.module';
 import { ListuserComponent } from './_components/listuser/listuser.component';
 import { ListproductComponent } from './_components/listproduct/listproduct.component';
 import { InsertUserComponent } from './_components/insert-user/insert-user.component';
+import { EditUserComponent } from './_components/edit-user/edit-user.component';
+import { InsertProductComponent } from './_components/insert-product/insert-product.component';
+import { EditProductComponent } from './_components/edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,10 @@ import { InsertUserComponent } from './_components/insert-user/insert-user.compo
     AlertComponent,
     ListuserComponent,
     ListproductComponent,
-    InsertUserComponent
+    InsertUserComponent,
+    EditUserComponent,
+    InsertProductComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +45,8 @@ import { InsertUserComponent } from './_components/insert-user/insert-user.compo
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
-    MatRadioModule
+    MatRadioModule,
+    CommonModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

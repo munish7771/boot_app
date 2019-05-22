@@ -1,8 +1,13 @@
 package com.coda.Bean;
 
+import java.util.Set;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
+import com.coda.Entity.RoleEntity;
+import com.coda.Entity.RoleName;
 
 import lombok.Data;
 
@@ -32,13 +37,23 @@ public class User {
 	@NotNull
 	private int role;
 	
-	public User(int id, String name, String username, String gender, String phoneNumber, String password) {
+	protected User() {}
+	
+	public User(int id, String name, String username, String gender, String phoneNumber, String password,Set<RoleEntity> roles) {
 		this.password = password;
 		this.id =id;
 		this.name = name;
 		this.username = username;
 		this.gender = gender;
 		this.phoneNo = phoneNumber;
+		RoleEntity admin = new RoleEntity();
+		admin.setId(2l);
+		admin.setName(RoleName.ROLE_ADMIN);
+		if(roles.contains(admin)) {
+			this.role = 1;
+		}else {
+			this.role = 0;
+		}
 	}
 
 }

@@ -7,6 +7,6 @@ public interface UserService {
     public String createUser(User user);
     public List<User> getUsers();
     public boolean editUser(User user);
-    public boolean deleteUser(int id);
+    public boolean deleteUser(String username);
     public User getUserByUsername(String username);
 }

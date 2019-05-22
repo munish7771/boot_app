@@ -14,10 +14,11 @@ import { AuthenticationService } from '../_services/authentication.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
+  genders:['Male','Female'];
   registerForm: FormGroup;
   loading = false;
   submitted = false;
+  flag:Boolean
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,35 +33,51 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.flag = true;
     this.registerForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      name: ['', Validators.required],
+      phonenumber: ['', Validators.required],
       username: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      gender:['', Validators.required],
+      role:''
   });
   }
   get f() { return this.registerForm.controls; }
 
   onSubmit() {
     this.submitted = true;
+    console.log("on submit invoked")
 
     // stop here if form is invalid
     if (this.registerForm.invalid) {
         return;
     }
-
     this.loading = true;
+    this.registerForm.value.role = ["user"]
     this.userService.register(this.registerForm.value)
-        .pipe(first())
+        // .pipe(first())
         .subscribe(
             data => {
+              console.log("success")
                 this.alertService.success('Registration successful', true);
                 this.router.navigate(['/login']);
             },
             error => {
-                this.alertService.error(error);
+              console.log(error);
+              if(error == "OK"){
+                this.flag = false;
+              }else{
+                this.alertService.error("something went wrong!");
                 this.loading = false;
-            });
+                this.flag = false;
+              }
+            }
+            );
+          if(this.flag == true){
+            this.alertService.success('Registration successful', true);
+            this.router.navigate(['/login']);
+          }
 }
 
 }

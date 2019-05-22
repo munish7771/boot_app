@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { User } from '../_models/user';
 import { Product } from '../_models/product';
+import { Register } from '../_models/register';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -16,19 +17,19 @@ export class UserService {
     getProducts(){
         return this.http.get<Product[]>(`${environment.apiUrl}/users/Products/`);
     }
-    getById(id: number) {
-        return this.http.get(`${environment.apiUrl}/users/${id}`);
+
+    register(register: Register) {
+        console.log(register);
+        return this.http.post(`${environment.apiUrl}/api/auth/signup`, register);
     }
 
-    register(user: User) {
-        return this.http.post(`${environment.apiUrl}/users/register`, user);
+    updateUser(user: User) {
+        user.role = "1";
+        console.log("before put: " + JSON.stringify(user))
+        return this.http.put(`${environment.apiUrl}/users/`, user);
     }
 
-    update(user: User) {
-        return this.http.put(`${environment.apiUrl}/users/${user.id}`, user);
-    }
-
-    delete(id: number) {
-        return this.http.delete(`${environment.apiUrl}/users/${id}`);
+    deleteUser(username: string) {
+        return this.http.delete(`${environment.apiUrl}/users/${username}`);
     }
 }

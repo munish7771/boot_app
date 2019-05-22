@@ -1,6 +1,6 @@
 <div class="jumbotron mx-auto" >
   <h1 class="display-4">User Details</h1>
-  <button type="button" class="btn btn-primary" (click)="openDialog()">Add new user</button>
+  <button type="button" class="btn btn-primary" (click)="openDialog()" *ngIf="isAdmin()">Add new user</button>
 </div>
 
 <div class="container">
@@ -13,7 +13,7 @@
       <div class="col-sm mb-2">
           <h4>Phone</h4>
       </div>
-      <div class="col-sm mb-2">
+      <div class="col-sm mb-2" *ngIf="isAdmin()">
           <h4>Action</h4>
         </div>
     </div>
@@ -32,11 +32,10 @@
         {{user.phoneNo}}
     </div>
 
-    <div class="col-sm mb-2">
-        <span class="badge badge-primary badge-pill" (click)="editUser(user)">edit</span>
-        <span class=" ml-2 badge badge-primary badge-pill" (click)="deleteUser(user)">delete</span>
-
-      </div>
+    <div class="col-sm mb-2" *ngIf="isAdmin()">
+        <span class="badge badge-primary " (click)="editUser(user)">edit</span>
+        <span class=" ml-2 badge badge-primary " (click)="deleteUser(user)">delete</span>
+    </div>
 
 
   </div>

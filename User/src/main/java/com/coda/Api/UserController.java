@@ -22,7 +22,7 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 @RestController
 @RequestMapping(value={"/users"})
-@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserController {
     @Autowired
     UserService userService;
@@ -36,8 +36,7 @@ public class UserController {
     	log.info("In API.getAllUsers");
     	return (userService.getUsers());
     }
-    // working
-    // lly for other methods in different controller - after frontend.
+
     @CrossOrigin(origins = "http://localhost:4200/users")
     @RequestMapping(value = "/Products/", method = RequestMethod.GET)
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
@@ -60,14 +59,16 @@ public class UserController {
     	return "Some Error!";
     }
     
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void deleteUser(@PathVariable("id") int id) {
+    @RequestMapping(value = "/{username}", method = RequestMethod.DELETE)
+    @PreAuthorize("hasRole('ADMIN')")
+    public void deleteUser(@PathVariable("username") String username) {
     	log.info("In API.deleteUser");
-    	userService.deleteUser(id);
+    	userService.deleteUser(username);
     }
     @RequestMapping(value = "/", method = RequestMethod.PUT)
+    @PreAuthorize("hasRole('ADMIN')")
     public void modifyUser(@Valid @RequestBody User user) {
-    	log.info("In API.modifyUser");
+    	log.info("In API.modifyUser" + user.toString());
         userService.editUser(user);
     } 
 }

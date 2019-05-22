@@ -57,8 +57,10 @@ public class ProductServiceImpl  implements ProductService{
 		try {
 			// throws exception if no product is present.
 			product = productRepository.findById(id).get();
+			log.info("gotcha product");
 			productRepository.delete(product);
 			productRepository.flush();
+			log.info("deleted");
 			return true;
 		}catch(Exception e) {
 			log.error("Error: " + e.getMessage() );
@@ -71,6 +73,7 @@ public class ProductServiceImpl  implements ProductService{
 		log.info("In Product service");
 		try {
 			productRepository.save(mapper.productToEntity(product));
+			log.info("saved");
 			return true;
 		}catch(Exception e) {
 			log.error("Error: " + e.getMessage() );

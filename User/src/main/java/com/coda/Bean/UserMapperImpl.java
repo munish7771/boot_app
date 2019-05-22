@@ -16,7 +16,7 @@ public class UserMapperImpl implements UserMapper{
 	@Override
 	public User entityToUser(UserEntity entity) {
 		// TODO Auto-generated method stub
-		return new User(entity.getId(), entity.getName(), entity.getUsername(), entity.getGender(), entity.getPhoneno(), entity.getPassword());
+		return new User(entity.getId(), entity.getName(), entity.getUsername(), entity.getGender(), entity.getPhoneno(), entity.getPassword(), entity.getRoles());
 	}
 
 	@Override

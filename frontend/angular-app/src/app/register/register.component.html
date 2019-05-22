@@ -1,32 +1,41 @@
 <h2>Register</h2>
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-        <label for="firstName">First Name</label>
-        <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-            <div *ngIf="f.firstName.errors.required">First Name is required</div>
+        <label for="firstName">Name</label>
+        <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+            <div *ngIf="f.name.errors.required">Your name is your identity</div>
         </div>
     </div>
     <div class="form-group">
-        <label for="lastName">Last Name</label>
-        <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
-        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-            <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+        <label for="lastName">Phone</label>
+        <input type="text" formControlName="phonenumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phonenumber.errors }" />
+        <div *ngIf="submitted && f.phonenumber.errors" class="invalid-feedback">
+            <div *ngIf="f.phonenumber.errors.required">Can i have your number? xoxo</div>
         </div>
     </div>
     <div class="form-group">
         <label for="username">Username</label>
         <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
         <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-            <div *ngIf="f.username.errors.required">Username is required</div>
+            <div *ngIf="f.username.errors.required">Enter something classy ..</div>
         </div>
     </div>
     <div class="form-group">
         <label for="password">Password</label>
         <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-            <div *ngIf="f.password.errors.required">Password is required</div>
-            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+            <div *ngIf="f.password.errors.required">Password please, pretty please .</div>
+            <div *ngIf="f.password.errors.minlength">Atleast enter 7 letters!</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="gender">Gender</label>
+        <input type ="radio" formControlName="gender" value = "M" class="form-control" [ngClass]="{'is-invalid': submitted && f.gender.errors}"/> Male<br>
+        <input type ="radio" formControlName="gender" value = "F" class="form-control" [ngClass]="{'is-invalid': submitted && f.gender.errors}"/> Female<br>
+        
+        <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required">Male or Female ?</div>
         </div>
     </div>
     <div class="form-group">

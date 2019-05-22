@@ -83,7 +83,8 @@ public class AuthController {
     }
     
     @PostMapping("/signup")
-    public ResponseEntity<String> registerUser(@Valid @RequestBody SignUpForm signUpRequest) {
+    public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpForm signUpRequest) {
+    	try {
         if(userRepository.existsByUsername(signUpRequest.getUsername())) {
             return new ResponseEntity<String>("Fail -> Username is already taken!",
                     HttpStatus.BAD_REQUEST);
@@ -94,6 +95,7 @@ public class AuthController {
                 signUpRequest.getPhonenumber(), encoder.encode(signUpRequest.getPassword()));
  
         Set<String> strRoles = signUpRequest.getRole();
+        log.info(strRoles);
         Set<RoleEntity> roles = new HashSet<>();
  
         strRoles.forEach(role -> {
@@ -119,8 +121,12 @@ public class AuthController {
         
         user.setRoles(roles);
         userRepository.save(user);
- 
+        log.info("user stored in repository");
         return ResponseEntity.ok().body("User registered successfully!");
+    	}catch(Exception e) {
+    		log.error(e.getMessage());
+    		return ResponseEntity.ok().body("error");
+    	}
     }
 
 	

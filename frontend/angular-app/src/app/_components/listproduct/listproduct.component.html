@@ -1,6 +1,6 @@
 <div class="jumbotron mx-auto" >
   <h1 class="display-4">Products</h1>
-  <button type="button" class="btn btn-primary" (click)="openDialog()">Add new Product</button>
+  <button type="button" class="btn btn-primary" (click)="openDialog()" *ngIf="isAdmin()">Add new Product</button>
 </div>
 
 <div class="container">
@@ -13,7 +13,7 @@
       <div class="col-sm mb-2">
           <h4>Description</h4>
       </div>
-      <div class="col-sm mb-2">
+      <div class="col-sm mb-2" *ngIf="isAdmin()">
           <h4>Action</h4>
         </div>
     </div>
@@ -31,9 +31,9 @@
     <div class="col-sm mb-2">
         {{product.description}}
     </div>
-    <div class="col-sm mb-2">
-        <span class="badge badge-primary badge-pill" (click)="random()">edit</span>
-        <span class=" ml-2 badge badge-primary badge-pill" (click)="random()">delete</span>
+    <div class="col-sm mb-2" *ngIf="isAdmin()">
+        <span class="badge badge-primary badge-pill" (click)="editProduct(product)">edit</span>
+        <span class=" ml-2 badge badge-primary badge-pill" (click)="deleteProduct(product)">delete</span>
     </div>
   </div>
 

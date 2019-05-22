@@ -2,6 +2,7 @@ package com.coda.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,21 +53,29 @@ public class UserServiceImpl implements UserService {
     public boolean editUser(User user) {
 		log.info("In User service");
 		try {
-			userRepository.delete(userRepository.findUserbyUsername(user.getUsername()));
-			userRepository.save(mapper.userToEntity(user));
-			return true;
+			log.info("about to find username :" +user.getUsername());
+			Optional<UserEntity> e = userRepository.findByUsername(user.getUsername());
+			// entity fetched is null.
+			if (e.isPresent()){
+				userRepository.delete(userRepository.findUserbyUsername(user.getUsername()));
+				userRepository.save(mapper.userToEntity(user));
+				return true;
+			}
+			log.info("didnt find user with username");
+			return false;
 		}catch(Exception e) {
 			log.error("Error: " + e.getMessage() );
 			return false;
 		}
     }
 
-    public boolean deleteUser(int id) {
+    public boolean deleteUser(String username) {
 		log.info("In User service");
 		UserEntity user = null;
 		try {
+			log.info("about to find username :" +username);
 			// throws exception if no product is present.
-			user = userRepository.findById(id).get();
+			user = userRepository.findUserbyUsername(username);
 			userRepository.delete(user);
 			userRepository.flush();
 			return true;

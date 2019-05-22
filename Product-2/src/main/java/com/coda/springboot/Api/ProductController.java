@@ -50,7 +50,7 @@ public class ProductController {
     	service.deleteProduct(id);
     }
     
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/", method = RequestMethod.PUT)
     public void modifyProduct(@Valid @RequestBody Product product) {
     	log.info("In API.modifyProduct");
         service.editProduct(product);
