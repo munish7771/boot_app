@@ -19,14 +19,12 @@ public class Product {
 	
 	@Getter @Setter 
 	@NotNull
-	@Size(max = 15 ,min = 5)
 	private String category;
 	
 	@Getter @Setter 
-	@Size(max = 100, min = 10)
 	private String description; 
 	
-	protected Product() {} 
+	public Product() {} 
 	
 	public Product(int id, String name, String category, String description) {
 		this.id = id;

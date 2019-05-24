@@ -95,15 +95,5 @@ public class UserServiceImpl implements UserService {
     		return null;
     	}
 	}
-    
-//    public User getUserByUsername(String username) {
-//    	log.info("In user service");
-//    	try {
-//    		return mapper.entityToUser(userRepository.findByUsername(username));
-//    	}catch(Exception e) {
-//    		log.error(e.getMessage());
-//    		return null;
-//    	}
-//    }
 
 }
